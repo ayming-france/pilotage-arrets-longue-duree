@@ -172,9 +172,9 @@
           .cost-bar { text-align: center; flex: 1; opacity: 0; }
           .cost-bar-visual { border-radius: var(--radius-xl) var(--radius-xl) 0 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding: var(--space-24) var(--space-16); min-width: 180px; position: relative; overflow: hidden; }
           .cost-bar-visual::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 0; }
-          .cost-bar-1 .cost-bar-visual { height: 160px; background: rgba(0,61,121,0.08); }
+          .cost-bar-1 .cost-bar-visual { height: 160px; background: rgba(var(--blue-dark-rgb), 0.08); }
           .cost-bar-1 .cost-bar-visual::before { background: linear-gradient(180deg, #4a90d9 0%, var(--blue-dark) 100%); }
-          .cost-bar-2 .cost-bar-visual { height: 240px; background: rgba(10,179,140,0.08); }
+          .cost-bar-2 .cost-bar-visual { height: 240px; background: rgba(var(--gradient-green-end-rgb), 0.08); }
           .cost-bar-2 .cost-bar-visual::before { background: linear-gradient(180deg, var(--gradient-green-end) 0%, #078a6c 100%); }
           .cost-bar-3 .cost-bar-visual { height: 380px; background: rgba(232,93,74,0.08); }
           .cost-bar-3 .cost-bar-visual::before { background: linear-gradient(180deg, #e85d4a 0%, #c0392b 100%); }
@@ -201,7 +201,7 @@
           .slide.active .cost-bar-3 .cost-label { animation: fadeIn 0.4s ease 1.7s forwards; }
           .slide.active .cost-arrow { animation: popIn 0.5s cubic-bezier(0.22,1,0.36,1) 2.0s forwards; }
           .slide.active .cost-footer { animation: fadeIn 0.5s ease 2.2s forwards; }
-            .next-step { margin-top: var(--space-34); padding: var(--space-18) var(--space-26); border-radius: var(--radius-14); background: linear-gradient(90deg, rgba(15,167,226,0.10), rgba(10,179,140,0.10)); border: 1px solid rgba(17,169,230,0.35); font-size: var(--font-18); font-weight: var(--weight-bold); color: var(--blue-dark); text-align: center; }
+            .next-step { margin-top: var(--space-34); padding: var(--space-18) var(--space-26); border-radius: var(--radius-14); background: linear-gradient(90deg, rgba(var(--blue-primary-rgb), 0.10), rgba(var(--gradient-green-end-rgb), 0.10)); border: 1px solid rgba(var(--blue-primary-rgb), 0.35); font-size: var(--font-18); font-weight: var(--weight-bold); color: var(--blue-dark); text-align: center; }
   </style>
 
         <style>
@@ -406,14 +406,14 @@
 
         <style>
           @keyframes chainSlideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-          @keyframes chainActiveGlow { from { opacity: 0; transform: scale(0.95); box-shadow: 0 0 0 rgba(0,61,121,0); } to { opacity: 1; transform: scale(1.04); box-shadow: var(--shadow-navy-lg); } }
+          @keyframes chainActiveGlow { from { opacity: 0; transform: scale(0.95); box-shadow: 0 0 0 rgba(var(--blue-dark-rgb), 0); } to { opacity: 1; transform: scale(1.04); box-shadow: var(--shadow-navy-lg); } }
           @keyframes chainArrowFade { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
 
           .atmp-chain { display: flex; align-items: stretch; gap: 0; width: 100%; max-width: 1100px; margin: 36px auto 0; }
           .atmp-link { flex: 1; padding: var(--space-32) var(--space-20); position: relative; text-align: center; color: #fff; opacity: 0; }
           .atmp-link:first-child { border-radius: var(--radius-xl) 0 0 var(--radius-xl); }
           .atmp-link:last-child { border-radius: 0 var(--radius-xl) var(--radius-xl) 0; }
-          .atmp-link-dim { background: linear-gradient(180deg, rgba(0,61,121,0.7) 0%, rgba(0,61,121,0.5) 100%); }
+          .atmp-link-dim { background: linear-gradient(180deg, rgba(var(--blue-dark-rgb), 0.7) 0%, rgba(var(--blue-dark-rgb), 0.5) 100%); }
           .atmp-link-active { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--gradient-green-end) 100%); z-index: 2; border-radius: var(--radius-lg); opacity: 0; }
           .atmp-number { font-size: 42px; font-weight: var(--weight-bold); opacity: 0.2; line-height: var(--leading-tight); margin-bottom: var(--space-6); }
           .atmp-link-active .atmp-number { opacity: 0.35; }
@@ -671,9 +671,11 @@
     <section class="slide" data-chapter="organisation" data-slide="11">
       <div class="slide-inner">
         <h1 class="slide-title">Organisation de la mission</h1>
-        <p class="slide-subtitle" style="color: #555; font-size: 17px; margin-top: 6px;">Un cycle de travail se d&eacute;roule sur <strong style="color: #003d79;">1 mois</strong></p>
+        <p class="slide-subtitle mission-subtitle">Un cycle de travail se d&eacute;roule sur <strong class="mission-highlight">1 mois</strong></p>
 
         <style>
+          .mission-subtitle { color: #555; font-size: 17px; margin-top: var(--space-6); }
+          .mission-highlight { color: var(--blue-dark); }
           @keyframes ganttBarGrow { from { opacity: 0; transform: scaleX(0); transform-origin: left; } to { opacity: 1; transform: scaleX(1); } }
           @keyframes ganttLabelFade { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -695,21 +697,26 @@
           .gantt-bar::before { left: -4px; }
           .gantt-bar::after { right: -4px; }
 
-          .gantt-bar.bar-1 { background: #4a90d9; }
+          .gantt-bar.bar-1 { background: #4a90d9; left: 1.5%; width: 25%; }
           .gantt-bar.bar-1::before, .gantt-bar.bar-1::after { background: #4a90d9; }
-          .gantt-bar.bar-2 { background: #4a90d9; }
+          .gantt-bar.bar-2 { background: #4a90d9; left: 24.5%; width: 8%; }
           .gantt-bar.bar-2::before, .gantt-bar.bar-2::after { background: #4a90d9; }
-          .gantt-bar.bar-3 { background: var(--gradient-green-end); }
+          .gantt-bar.bar-3 { background: var(--gradient-green-end); left: 31%; width: 13%; }
           .gantt-bar.bar-3::before, .gantt-bar.bar-3::after { background: var(--gradient-green-end); }
-          .gantt-bar.bar-4 { background: var(--blue-dark); }
+          .gantt-bar.bar-4 { background: var(--blue-dark); left: 48%; width: 50%; }
           .gantt-bar.bar-4::before { background: var(--blue-dark); }
           .gantt-bar.bar-4::after { background: transparent; width: 0; height: 0; right: -8px; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 10px solid var(--blue-dark); border-radius: 0; }
-          .gantt-bar.bar-5 { background: var(--blue-dark); }
+          .gantt-bar.bar-5 { background: var(--blue-dark); left: 96%; width: 4%; }
           .gantt-bar.bar-5::before { background: var(--blue-dark); }
           .gantt-bar.bar-5::after { background: transparent; width: 0; height: 0; right: -7px; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid var(--blue-dark); border-radius: 0; }
 
           .gantt-label { position: absolute; top: var(--space-22); font-size: var(--font-13); color: #333; line-height: 1.4; opacity: 0; }
           .gantt-label strong { color: var(--blue-dark); font-weight: var(--weight-bold); }
+          .gantt-label.lbl-1 { left: 1.5%; max-width: 240px; }
+          .gantt-label.lbl-2 { left: 24.5%; max-width: 240px; }
+          .gantt-label.lbl-3 { left: 31%; max-width: 220px; }
+          .gantt-label.lbl-4 { left: 48%; max-width: 380px; }
+          .gantt-label.lbl-5 { right: 0; left: auto; max-width: 110px; text-align: right; }
 
           .slide.active .gantt-bar.bar-1 { animation: ganttBarGrow 0.5s cubic-bezier(0.22,1,0.36,1) 0.3s forwards; }
           .slide.active .gantt-bar.bar-2 { animation: ganttBarGrow 0.5s cubic-bezier(0.22,1,0.36,1) 0.6s forwards; }
@@ -741,40 +748,40 @@
           <div class="gantt-phase">
             <div class="gantt-phase-spacer"></div>
             <div class="gantt-track">
-              <div class="gantt-bar bar-1" style="left: 1.5%; width: 25%;"></div>
-              <div class="gantt-label lbl-1" style="left: 1.5%; max-width: 240px;"><strong>J1 &ndash; J8 :</strong> collecte digitalis&eacute;e des dossiers</div>
+              <div class="gantt-bar bar-1"></div>
+              <div class="gantt-label lbl-1"><strong>J1 &ndash; J8 :</strong> collecte digitalis&eacute;e des dossiers</div>
             </div>
           </div>
 
           <div class="gantt-phase">
             <div class="gantt-phase-spacer"></div>
             <div class="gantt-track">
-              <div class="gantt-bar bar-2" style="left: 24.5%; width: 8%;"></div>
-              <div class="gantt-label lbl-2" style="left: 24.5%; max-width: 240px;"><strong>J+8&ndash;10 :</strong> &eacute;tude des &eacute;l&eacute;ments<sup>*</sup> par nos m&eacute;decins-experts</div>
+              <div class="gantt-bar bar-2"></div>
+              <div class="gantt-label lbl-2"><strong>J+8&ndash;10 :</strong> &eacute;tude des &eacute;l&eacute;ments<sup>*</sup> par nos m&eacute;decins-experts</div>
             </div>
           </div>
 
           <div class="gantt-phase">
             <div class="gantt-phase-spacer"></div>
             <div class="gantt-track">
-              <div class="gantt-bar bar-3" style="left: 31%; width: 13%;"></div>
-              <div class="gantt-label lbl-3" style="left: 31%; max-width: 220px;"><strong>J+10 :</strong> communication au client</div>
+              <div class="gantt-bar bar-3"></div>
+              <div class="gantt-label lbl-3"><strong>J+10 :</strong> communication au client</div>
             </div>
           </div>
 
           <div class="gantt-phase">
             <div class="gantt-phase-spacer"></div>
             <div class="gantt-track">
-              <div class="gantt-bar bar-4" style="left: 48%; width: 50%;"></div>
-              <div class="gantt-label lbl-4" style="left: 48%; max-width: 380px;"><strong>J+15 :</strong> envoi le cas &eacute;ch&eacute;ant d'un courrier de signalement</div>
+              <div class="gantt-bar bar-4"></div>
+              <div class="gantt-label lbl-4"><strong>J+15 :</strong> envoi le cas &eacute;ch&eacute;ant d'un courrier de signalement</div>
             </div>
           </div>
 
           <div class="gantt-phase">
             <div class="gantt-phase-spacer"></div>
             <div class="gantt-track">
-              <div class="gantt-bar bar-5" style="left: 96%; width: 4%;"></div>
-              <div class="gantt-label lbl-5" style="right: 0; left: auto; max-width: 110px; text-align: right;"><strong>J+30 :</strong> nouveau cycle</div>
+              <div class="gantt-bar bar-5"></div>
+              <div class="gantt-label lbl-5"><strong>J+30 :</strong> nouveau cycle</div>
             </div>
           </div>
         </div>
@@ -805,7 +812,7 @@
           .case-body { padding: var(--space-28) 36px; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-28); }
           .case-section h4 { font-size: var(--font-13); text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue-dark); margin: 0 0 var(--space-12); }
           .case-section p { font-size: var(--font-14); line-height: var(--leading-relaxed); color: #555; margin: 0; }
-          .case-footer { padding: var(--space-20) 36px; background: rgba(10,179,140,0.06); border-top: 1px solid rgba(10,179,140,0.15); display: flex; align-items: center; gap: var(--space-12); }
+          .case-footer { padding: var(--space-20) 36px; background: rgba(var(--gradient-green-end-rgb), 0.06); border-top: 1px solid rgba(var(--gradient-green-end-rgb), 0.15); display: flex; align-items: center; gap: var(--space-12); }
           .case-footer svg { width: 20px; height: 20px; color: var(--gradient-green-end); flex-shrink: 0; }
           .case-footer p { font-size: var(--font-14); color: #333; margin: 0; font-weight: var(--weight-semibold); }
         </style>
@@ -846,7 +853,7 @@
     </section>
 
     <!-- SLIDE 12: OPTIONS - Offres AT/MP -->
-    <section class="slide" data-chapter="options" data-slide="13" style="background: var(--bg-light);">
+    <section class="slide options-slide" data-chapter="options" data-slide="13">
       <div class="slide-inner">
         <h1 class="slide-title">Un accompagnement sur toute la cha&icirc;ne AT/MP</h1>
 
@@ -857,7 +864,7 @@
           .option-card .card-image img { transition: transform 0.4s ease; }
           .option-card .card-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(0,61,121,0.7) 0%, rgba(10,179,140,0.6) 100%);
+            background: linear-gradient(135deg, rgba(var(--blue-dark-rgb), 0.7) 0%, rgba(var(--gradient-green-end-rgb), 0.6) 100%);
             display: flex; align-items: center; justify-content: center;
             opacity: 0; transition: opacity 0.4s ease; border-radius: var(--radius-lg);
           }
@@ -870,9 +877,12 @@
           .option-card:hover .card-image img { transform: scale(1.05); }
           .option-card:hover .card-overlay span { background: rgba(255,255,255,0.15); }
           .option-badge { display: inline-block; padding: var(--space-4) var(--space-14); border-radius: var(--radius-2xl); font-size: var(--font-11); font-weight: var(--weight-bold); letter-spacing: 1px; text-transform: uppercase; margin-bottom: var(--space-8); background: linear-gradient(135deg, var(--blue-dark), var(--gradient-green-end)); color: #fff; }
+          .options-slide { background: var(--bg-light); }
+          .options-row { display: flex; justify-content: center; gap: var(--space-32); width: 100%; max-width: 1050px; }
+          .ancrage-title { text-align: left; margin-bottom: var(--space-28); }
         </style>
 
-        <div style="display: flex; justify-content: center; gap: 32px; width: 100%; max-width: 1050px;">
+        <div class="options-row">
           <a href="https://ayming-france.github.io/declarer-un-accident-du-travail/" target="_blank" class="option-card">
             <div class="column-card">
               <div class="card-image">
@@ -1025,7 +1035,7 @@
       <div class="slide-inner">
         <div class="ancrage-layout">
           <div class="ancrage-text">
-            <h1 class="slide-title" style="text-align: left; margin-bottom: 28px;">Un fort ancrage <strong>en France</strong>...</h1>
+            <h1 class="slide-title ancrage-title">Un fort ancrage <strong>en France</strong>...</h1>
             <p>Nos &eacute;quipes locales accompagnent au quotidien nos clients dans leur d&eacute;veloppement et leurs transformations <strong>en s'appuyant sur un &eacute;cosyst&egrave;me de professionnels en r&eacute;gions</strong> :</p>
             <p>experts scientifiques, experts comptables, &eacute;tablissements bancaires, p&ocirc;les de comp&eacute;titivit&eacute;, f&eacute;d&eacute;rations professionnelles, avec un maillage de cabinets d'avocats et de m&eacute;decins ind&eacute;pendants.</p>
           </div>
@@ -1198,7 +1208,7 @@
     /* Gradient overlay always visible */
     .video-container::before {
       content: ''; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(135deg, rgba(0,61,121,0.4) 0%, rgba(10,179,140,0.2) 50%, rgba(0,0,0,0.5) 100%);
+      background: linear-gradient(135deg, rgba(var(--blue-dark-rgb), 0.4) 0%, rgba(var(--gradient-green-end-rgb), 0.2) 50%, rgba(0,0,0,0.5) 100%);
       transition: opacity 0.4s ease;
     }
     .video-container:hover::before { opacity: 0.7; }
